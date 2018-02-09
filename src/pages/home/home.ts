@@ -58,7 +58,7 @@ export class HomePage {
   }
 
   doInfinite(infiniteScroll) {
-    let paramsUrl = (this.feeds.length > 0) ? this.feeds[this.feeds.length - 1].data.name : "";
+    let paramsUrl = (this.feeds.length > 0) ? this.feeds[this.feeds.length - 1] : "";
 
     this.redditService.fetchData(this.olderPosts + paramsUrl)
       .then(data => {
@@ -71,7 +71,7 @@ export class HomePage {
 
   doRefresh(refresher) {
 
-    let paramsUrl = this.feeds[0].data.name;
+    let paramsUrl = this.feeds[0];
 
     this.redditService.fetchData(this.newerPosts + paramsUrl)
       .then(data => {

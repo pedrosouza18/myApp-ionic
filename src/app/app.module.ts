@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CadastroPage } from './../pages/cadastro/cadastro';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,7 +15,8 @@ import { RedditServiceProvider } from '../providers/reddit-service/reddit-servic
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { RedditServiceProvider } from '../providers/reddit-service/reddit-servic
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,

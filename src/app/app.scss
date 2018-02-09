@@ -14,3 +14,48 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+img {
+    height: 80px;
+    width: 80px;
+}
+
+.p-8 {
+    padding: 8px;
+}
+
+.icone-config {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #b8cb87;
+    font-weight: bold;
+}
+
+.col-configuracaoes {
+    position: absolute;
+    bottom: 0;
+    right: 6px;
+}
+
+.nome-usuario {
+    font-size: 2rem;
+    color: white;
+}
+
+.toolbar-background-md {
+    border-color: #b2b2b2;
+    background: #003b4b;
+}
+
+.scroll-content {
+    background-color: #003b4b;
+    overflow-y: auto;
+}
+
+.navegacao {
+    background-color: #003b4b;
+}
+
+.white {
+    color: white;
+}
