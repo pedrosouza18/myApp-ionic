@@ -1,19 +1,27 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>
+        <ion-searchbar 
+          [(ngModel)]="searchTerm"
+          (ionInput)="filterItems()" 
+          [formControl]="searchTermControl" 
+          [showCancelButton]=true
+          placeholder="Filtrar..." >
+        </ion-searchbar>
+    </ion-title>
     <ion-buttons end>
         <button ion-button icon-only (click)="showFilters()">
-            <ion-icon name="funnel"></ion-icon>
+            <ion-icon name="funnel" [style.color]="hasFilter ? 'orange' : 'inherit'"></ion-icon>
         </button>
-     </ion-buttons> 
+     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher (ionRefresh)="doRefresh($event)" [pullMin]=90>
       <ion-refresher-content
           pullingIcon="arrow-dropdown"
           pullingText="Pull to refresh"
@@ -26,12 +34,19 @@
         <img src="{{ feed.data.thumbnail }}">
       </ion-thumbnail>
       <h2>{{feed.data.title}}</h2>
-      <p>{{feed.data.domain}}</p>
+      <div [ngSwitch]=feed.data.subreddit.toLowerCase()>
+        <p *ngSwitchCase="'askreddit'"><ion-icon name="help-circle"></ion-icon> {{feed.data.domain}}</p>
+        <p *ngSwitchCase="'gaming'"><ion-icon name="logo-playstation"></ion-icon> {{feed.data.domain}}</p>
+        <p *ngSwitchCase="'music'"><ion-icon name="musical-notes"></ion-icon> {{feed.data.domain}}</p>
+        <p *ngSwitchCase="'movies'"><ion-icon name="film"></ion-icon> {{feed.data.domain}}</p>
+        <p *ngSwitchCase="'pics'"><ion-icon name="image"></ion-icon> {{feed.data.domain}}</p>
+        <p *ngSwitchDefault>{{feed.data.domain}}</p>
+      </div>
     </button>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
       <ion-infinite-scroll-content
-         loadingText="Loading more data...">
+         loadingText="Carregando dados...">
       </ion-infinite-scroll-content>
    </ion-infinite-scroll> 
 </ion-content>
